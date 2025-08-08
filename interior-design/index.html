@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Interior Designer Profile Questionnaire</title>
+    <meta name="description" content="An intuitive, attractive questionnaire for interior designers to share experience, specializations, projects, and style preferences." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app">
+      <header class="app__header">
+        <div class="brand">
+          <div class="brand__logo" aria-hidden="true">
+            <!-- Simple geometric logo -->
+            <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect x="2" y="2" width="24" height="24" rx="6" fill="url(#g)"/>
+              <path d="M8 19L14 9L20 19H8Z" fill="white" opacity="0.9"/>
+              <defs>
+                <linearGradient id="g" x1="2" y1="2" x2="26" y2="26" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#6EE7B7"/>
+                  <stop offset="1" stop-color="#3B82F6"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <div class="brand__text">
+            <h1>Designer Profile</h1>
+            <p>Share strengths, style, and standout work.</p>
+          </div>
+        </div>
+
+        <div class="progress" role="progressbar" aria-label="Form progress" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress__bar" id="progressBar"></div>
+          <div class="progress__steps" id="progressSteps" aria-hidden="true"></div>
+        </div>
+      </header>
+
+      <main class="app__content">
+        <!-- Step 1: Basics -->
+        <section class="step is-active" data-step="1" aria-labelledby="step1Title">
+          <h2 id="step1Title" title="Provide your basic profile, contact details, location, experience and primary role.">Basics</h2>
+          <div class="grid">
+            <div class="card">
+              <h3 title="Name, email and where you are based.">Profile</h3>
+              <div class="fields fields--compact">
+                <label class="field">
+                  <span>Full name</span>
+                  <input id="fullName" type="text" placeholder="e.g., Alex Morgan" />
+                </label>
+                <label class="field">
+                  <span>Email</span>
+                  <input id="email" type="email" placeholder="e.g., alex@example.com" />
+                </label>
+                <label class="field">
+                  <span>Location</span>
+                  <input id="location" type="text" placeholder="City, Country" />
+                </label>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 title="Years of experience and your primary role.">Experience snapshot</h3>
+              <div class="range">
+                <label for="yearsExp" title="Total professional experience as an interior designer or closely related role.">Years of experience</label>
+                <div class="range__row">
+                  <input id="yearsExp" type="range" min="0" max="30" step="1" value="3" />
+                  <div class="range__bubble" id="yearsExpBubble">3 yrs</div>
+                </div>
+                <div class="range__scale">
+                  <span>0</span><span>10</span><span>20</span><span>30+</span>
+                </div>
+              </div>
+
+              <div class="segmented">
+                <div class="segmented__label" title="Your primary function in most projects.">Primary role</div>
+                <div class="segmented__options" id="roleOptions" role="group" aria-label="Primary role">
+                  <button type="button" data-value="Interior Designer" class="is-selected">Interior Designer</button>
+                  <button type="button" data-value="Interior Architect">Interior Architect</button>
+                  <button type="button" data-value="Stylist">Stylist</button>
+                  <button type="button" data-value="3D Visualizer">3D Visualizer</button>
+                  <button type="button" data-value="Project Manager">Project Manager</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 2: Seniority indicators -->
+        <section class="step" data-step="2" aria-labelledby="step2Title">
+          <h2 id="step2Title" title="Estimate experience level through projects delivered, budget responsibility, leadership and credentials.">Seniority indicators</h2>
+          <div class="grid">
+            <div class="card">
+              <h3 title="How many projects you've completed and what budgets you've managed.">Delivery & Scale</h3>
+              <div class="range">
+                <label for="projectsCount">Completed projects</label>
+                <div class="range__row">
+                  <input id="projectsCount" type="range" min="0" max="120" step="1" value="15" />
+                  <div class="range__bubble" id="projectsCountBubble">15</div>
+                </div>
+                <div class="range__scale range__scale--ticks" id="projectsCountTicks" aria-hidden="true"></div>
+              </div>
+
+              <div class="segmented">
+                <div class="segmented__label">Largest budget handled</div>
+                <div class="segmented__options" id="budgetTier" role="group" aria-label="Budget tier">
+                  <button type="button" data-score="5" class="is-selected" data-value="&lt;$10k">&lt;$10k</button>
+                  <button type="button" data-score="15" data-value="$10k–$50k">$10k–$50k</button>
+                  <button type="button" data-score="30" data-value="$50k–$200k">$50k–$200k</button>
+                  <button type="button" data-score="45" data-value="$200k–$1M">$200k–$1M</button>
+                  <button type="button" data-score="60" data-value=">= $1M">$1M+</button>
+                </div>
+              </div>
+            </div>
+
+            <div class="card">
+              <h3 title="Leadership responsibilities and relevant certifications that signal seniority.">Leadership & Credentials</h3>
+              <div class="pills" id="leadershipPills" aria-label="Leadership experience">
+                <button type="button" class="pill" data-weight="20" data-value="Led project teams">Led project teams</button>
+                <button type="button" class="pill" data-weight="12" data-value="Mentored designers">Mentored designers</button>
+                <button type="button" class="pill" data-weight="6" data-value="Client-facing lead">Client-facing lead</button>
+                <button type="button" class="pill" data-weight="3" data-value="Solo contributor">Solo contributor</button>
+              </div>
+
+              <div class="divider"></div>
+
+              <div class="pills" id="certPills" aria-label="Certifications">
+                <button type="button" class="pill" data-weight="10" data-value="NCIDQ">NCIDQ</button>
+                <button type="button" class="pill" data-weight="8" data-value="LEED AP">LEED AP</button>
+                <button type="button" class="pill" data-weight="6" data-value="WELL AP">WELL AP</button>
+                <button type="button" class="pill" data-weight="4" data-value="Licensed Architect">Licensed Architect</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 3: Domain specialization -->
+        <section class="step" data-step="3" aria-labelledby="step3Title">
+          <h2 id="step3Title" title="Pick the industries you specialize in or have substantial experience with.">Domain specialization</h2>
+          <p class="help">Pick all that apply. Click again to deselect.</p>
+          <div class="cards cards--grid" id="domainCards" role="group" aria-label="Domains">
+            <!-- Cards will be populated by JS for easier maintenance -->
+          </div>
+        </section>
+
+        <!-- Step 4: Design themes & patterns -->
+        <section class="step" data-step="4" aria-labelledby="step4Title">
+          <h2 id="step4Title" title="Choose styles, materials and color palettes that reflect your taste and expertise.">Design themes & patterns</h2>
+          <div class="grid">
+            <div class="card">
+              <h3 title="Aesthetic styles you enjoy working with or specialize in.">Styles you love</h3>
+              <div class="pills pills--wrap" id="stylePills"></div>
+            </div>
+
+            <div class="card">
+              <h3 title="Preferred materials and accents that feature in your designs.">Materials & accents</h3>
+              <div class="pills pills--wrap" id="materialPills"></div>
+              <div class="divider"></div>
+              <h3 title="Typical color palettes you gravitate towards.">Palette preference</h3>
+              <div class="swatches" id="paletteSwatches"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Step 5: Showcase projects -->
+        <section class="step" data-step="5" aria-labelledby="step5Title">
+          <h2 id="step5Title" title="Add up to two short project highlights including role, budget and outcomes.">Showcase 1–2 projects</h2>
+          <p class="help">Short and sweet. Add up to two highlights.</p>
+          <div id="projectContainer" class="projects"></div>
+          <div class="actions-row">
+            <button type="button" class="btn btn--ghost" id="addProjectBtn">+ Add project</button>
+          </div>
+        </section>
+
+        <!-- Step 6: Review & submit -->
+        <section class="step" data-step="6" aria-labelledby="step6Title">
+          <h2 id="step6Title" title="Review your profile and export as JSON or print for sharing.">Review & submit</h2>
+          <div class="review" id="review"></div>
+          <div class="actions-row">
+            <button type="button" class="btn" id="downloadJsonBtn">Download JSON</button>
+            <button type="button" class="btn btn--ghost" id="copyJsonBtn">Copy JSON</button>
+            <button type="button" class="btn btn--ghost" id="printBtn">Print</button>
+          </div>
+        </section>
+      </main>
+
+      <footer class="app__footer">
+        <div class="nav">
+          <button type="button" class="btn btn--ghost" id="prevBtn">Back</button>
+          <button type="button" class="btn" id="nextBtn">Next</button>
+        </div>
+      </footer>
+    </div>
+
+    <template id="projectCardTemplate">
+      <div class="project-card">
+        <div class="project-card__header">
+          <h3 title="A concise highlight: name, type, your role, budget and outcomes.">Project</h3>
+          <button type="button" class="icon-btn remove-project" title="Remove project" aria-label="Remove project">×</button>
+        </div>
+        <div class="fields fields--compact">
+          <label class="field">
+            <span>Project name</span>
+            <input type="text" data-field="name" placeholder="e.g., Riverside Loft" />
+          </label>
+          <div class="field field--row">
+            <label class="field">
+              <span>Year</span>
+              <input type="number" data-field="year" placeholder="2023" min="1990" max="2099" />
+            </label>
+            <label class="field">
+              <span>Type</span>
+              <select data-field="type">
+                <option value="Residential">Residential</option>
+                <option value="Commercial">Commercial</option>
+                <option value="Hospitality">Hospitality</option>
+                <option value="Workplace">Workplace</option>
+                <option value="Retail">Retail</option>
+                <option value="Healthcare">Healthcare</option>
+                <option value="Education">Education</option>
+              </select>
+            </label>
+            <label class="field">
+              <span>Role</span>
+              <select data-field="role">
+                <option value="Lead Designer">Lead Designer</option>
+                <option value="Design Associate">Design Associate</option>
+                <option value="Stylist">Stylist</option>
+                <option value="Project Manager">Project Manager</option>
+                <option value="Visualizer">Visualizer</option>
+              </select>
+            </label>
+          </div>
+
+          <div class="segmented">
+            <div class="segmented__label">Budget bracket</div>
+            <div class="segmented__options compact" data-field="budget">
+              <button type="button" data-value="&lt;$10k" class="is-selected">&lt;$10k</button>
+              <button type="button" data-value="$10k–$50k">$10k–$50k</button>
+              <button type="button" data-value="$50k–$200k">$50k–$200k</button>
+              <button type="button" data-value="$200k–$1M">$200k–$1M</button>
+              <button type="button" data-value=">= $1M">$1M+</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <span>Outcomes</span>
+            <div class="pills pills--wrap small" data-field="outcomes">
+              <button type="button" class="pill" data-value="On-time delivery">On-time delivery</button>
+              <button type="button" class="pill" data-value="On-budget">On-budget</button>
+              <button type="button" class="pill" data-value="Client delight">Client delight</button>
+              <button type="button" class="pill" data-value="Awards">Awards</button>
+              <button type="button" class="pill" data-value="Sustainability credits">Sustainability credits</button>
+            </div>
+          </div>
+
+          <div class="field">
+            <span>Tools used</span>
+            <div class="pills pills--wrap small" data-field="tools">
+              <button type="button" class="pill" data-value="AutoCAD">AutoCAD</button>
+              <button type="button" class="pill" data-value="SketchUp">SketchUp</button>
+              <button type="button" class="pill" data-value="Revit">Revit</button>
+              <button type="button" class="pill" data-value="3ds Max">3ds Max</button>
+              <button type="button" class="pill" data-value="Rhino">Rhino</button>
+              <button type="button" class="pill" data-value="Enscape">Enscape</button>
+              <button type="button" class="pill" data-value="V-Ray">V-Ray</button>
+            </div>
+          </div>
+
+          <label class="field">
+            <span>Micro‑story (140 chars)</span>
+            <textarea data-field="story" maxlength="140" placeholder="What made this project a success?"></textarea>
+            <div class="char-count" data-field="storyCount">0 / 140</div>
+          </label>
+        </div>
+      </div>
+    </template>
+
+    <script src="script.js" defer></script>
+  </body>
+  </html>
+
+
